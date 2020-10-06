@@ -1,0 +1,16 @@
+img{
+    width: 300px;
+    height: auto;
+    margin: 0 auto;
+}
+img:hover{
+    transition: 3s;
+    -webkit-filter: none;
+}
+image:active{
+    transition: 3s;
+    -webkit-filter: none;
+}
+.photo{
+    -webkit-filter: blur(4px);
+}
