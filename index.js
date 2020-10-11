@@ -14,6 +14,10 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname,'html/about.html')) 
 })
 
+app.get('/googleef7e575b1a39c957.html', (req, res) =>{
+    res.sendFile(path.join(__dirname, '/googleef7e575b1a39c957.html'))
+})
+
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`)
 })
