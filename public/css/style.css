@@ -4,37 +4,35 @@ body {
     perspective: 1000px;
 }
 
-h1{
+h1 {
     font-family: "Bradley Hand";
     font-size: 80px;
     color: rgb(53, 63, 151);
     text-shadow: 5px 5px 5px;
     transition-property: font-size, color;
     transition: 3s ease;
+    /*margin: 0;*/
+    margin-bottom: 5px;
+    margin-top: 0px;
 }
 
-h1:hover{
-   font-size: 200px;
-   color: aqua;
-}
-
-img{
+img {
     transition: 3s;
     width: 300px;
     height: auto;
     margin: 0 auto;
 }
 
-img:hover{
+img:hover {
     -webkit-filter: none;
 }
 
-p{
+p {
     font-size: large;
 }
 
 /* class */
-.messages{
+.messages {
     background-color: #808000;
     height: 300px;
     border-top: solid 20px rgb(90, 163, 223);
@@ -43,13 +41,13 @@ p{
     border-right: solid 20px rgb(103, 235, 180);
 }
 
-.myContent{
+.myContent {
     background-color: #5f5f5f;
     border: 20px solid #5f5f5f;
     /* padding-: darkgray; */
 }
 
-.pageContent::after{
+.pageContent::after {
     content: "";
     display: block;
     clear: both;
@@ -60,15 +58,14 @@ p{
     -webkit-filter: blur(10px) brightness(0) grayscale(1) contrast(0.24);
 }
 
-.textArea{
+.textArea {
     padding-top: 50px;
 }
 
-.textArea:before{
+.textArea:before {
     content: "";
     height: 0;
     width: 0;
-    /* border-top: solid transparent 50px; */
     border-left: solid transparent 50px;
     border-bottom: solid transparent 50px;
     border-right: solid 50px white;
@@ -77,39 +74,38 @@ p{
     top: -100px;
 }
 
-.vistor{
-   background-color: grey;
-   border: 20px solid gray;
+.vistor {
+    background-color: grey;
+    border: 20px solid gray;
 }
 
-.vistor:after{
+.vistor:after {
     content: "";
     display: block;
     clear: both;
 }
 
-.vistor div{
+.vistor div {
     float: left;
 }
 
 /* cube */
-.cube{
-    width: 300px;
-    height: 300px;
+.cube {
+    width: 100px;
+    height: 100px;
     position: relative;
     margin: auto;
     transform-style: preserve-3d;
-    /* transform: rotate3d(2,1,3, 800deg); */
-    transition: all 10s;
+    transition: all 3s;
 }
 
-.cube:hover{
-    transform: rotate3d(1,2,1, 800deg);
+.cube:hover {
+    transform: rotate3d(1, 2, 1, 800deg);
 }
 
-.page{
-    width: 300px;
-    height: 300px;
+.page {
+    width: 100px;
+    height: 100px;
     position: absolute;
     left: 0;
     top: 0;
@@ -117,33 +113,134 @@ p{
     border: 0px;
 }
 
-.front{
-    background-image: url('/img/d6.jpeg');
+.front {
     background-size: 100% auto;
-    transform: translateZ(150px);
+    transform: translateZ(50px);
 }
-.back{
+
+.front {
+    background-image: url('/img/d6.jpeg');
+}
+
+.back {
     background-image: url('/img/d1.jpeg');
     background-size: 100% auto;
-    transform: translateZ(-150px);
+    transform: translateZ(-50px);
 }
-.left{
+
+.left {
     background-image: url('/img/d2.jpeg');
     background-size: 100% auto;
-    transform: rotateY(-90deg) translateZ(150px);
+    transform: rotateY(-90deg) translateZ(50px);
 }
-.right{
+
+.right {
     background-image: url('/img/d3.jpg');
     background-size: 100% auto;
-    transform: rotateY(90deg) translateZ(150px);
+    transform: rotateY(90deg) translateZ(50px);
 }
-.top{
+
+.top {
     background-image: url('/img/d4.png');
     background-size: 100% auto;
-    transform: rotateX(90deg) translateZ(150px);
+    transform: rotateX(90deg) translateZ(50px);
 }
-.bottom{
+
+.bottom {
     background-image: url('/img/d5.png');
     background-size: 100% auto;
-    transform: rotateX(-90deg) translateZ(150px);
+    transform: rotateX(-90deg) translateZ(50px);
+}
+
+/*buttons*/
+.choice:after {
+    content: "";
+    height: 80px;
+    width: 60px;
+    display: block;
+    background-image: url('/img/犬夜叉.png');
+    background-size: auto;
+    position: absolute;
+    right: 5%;
+    animation: inayaxia 1.5s steps(6) infinite;
+}
+
+@keyframes inayaxia {
+    100%{background-position: -408px 0; transform: rotateZ(45deg)}
+}
+
+.choice {
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    background-size: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.button {
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    font-size: 10px;
+    color: gray;
+    border: lightyellow 1px solid;
+    margin-left: 2%;
+    margin-right: 2%;
+    border-radius: 10px;
+}
+
+#front:checked ~ .cube {
+    transform: rotate3d(0, 0, 0, 0deg);
+}
+
+#back:checked ~ .cube {
+    transform: rotate3d(0, 1, 0, 180deg);
+}
+
+#left:checked ~ .cube {
+    transform: rotate3d(0, 1, 0, 90deg);
+}
+
+#right:checked ~ .cube {
+    transform: rotate3d(0, 1, 0, -90deg);
+}
+
+#top:checked ~ .cube {
+    transform: rotate3d(1, 0, 0, -90deg);
+}
+
+#bottom:checked ~ .cube {
+    transform: rotate3d(1, 0, 0, 90deg);
+}
+
+#front:checked ~ .choice [for="front"] {
+    background: white;
+    box-shadow: 0 0 20px white;
+}
+
+#back:checked ~ .choice [for="back"] {
+    background: white;
+    box-shadow: 0 0 20px white;
+}
+
+#left:checked ~ .choice [for="left"] {
+    background: white;
+    box-shadow: 0 0 20px white;
+}
+
+#right:checked ~ .choice [for="right"] {
+    background: white;
+    box-shadow: 0 0 20px white;
+}
+
+#top:checked ~ .choice [for="top"] {
+    background: white;
+    box-shadow: 0 0 20px white;
+}
+
+#bottom:checked ~ .choice [for="bottom"] {
+    background: white;
+    box-shadow: 0 0 20px white;
 }
